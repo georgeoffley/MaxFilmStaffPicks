@@ -1,23 +1,34 @@
-import logo from './logo.svg';
 import './App.css';
+//import { getAllPicks } from './getPicks'
+import { useState, useEffect } from 'react'
 
 function App() {
+  const API_URL = 'https://9ubroihs37.execute-api.us-east-1.amazonaws.com/default/MaxFilmQuery'
+
+  const [picks, setPicks] = useState([]);
+
+  useEffect(() => {
+
+    const fetchPicks = async () => {
+      try {
+        const response = await fetch(API_URL, {
+          method: 'GET',
+          headers: { 'Content-Type': 'application/json'},
+        });
+        const listPicks = await response.json();
+        console.log(listPicks)
+        setPicks(listPicks);
+      } catch (err) {
+        console.log(err.stack)
+      }
+    }
+
+    (async () => await fetchPicks())();
+  }, [])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Put stuff here!
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Hello World!</h1>
     </div>
   );
 }

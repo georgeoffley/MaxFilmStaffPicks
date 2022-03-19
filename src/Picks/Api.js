@@ -13,21 +13,26 @@ export default function Api() {
     if (!data) return "Loading...";
 
     //console.log(data.Items[0].EpisodeNum.N);
-    console.log(data)
+    //console.log(data[0].picks)
+    //console.log(typeof data[0].picks)
 
     //let Items = data.Items
 
     // TODO: Figure out how to map out the picks for each movie
+    // const KeyVal = ...
 
     return(
         <div>
             <p>Data Here</p>
             <div>{ data ? (
-                data.Items.map((item) => {
+                data.map((item) => {
                     return (
                         <>
-                            <p>Episode Number : {item.EpisodeNum.N} </p>
-                            <p>Date: {item.date.S}</p>
+                            <p>Episode Number : {item.EpisodeNum} </p>
+                            <p>Date: {item.date}</p>
+                            <div>
+                                {item.picks.Alonso}
+                            </div>
                         </>
                     )
                 })

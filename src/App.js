@@ -1,5 +1,3 @@
-import './App.css';
-
 import {Picks} from './Picks'
 
 function App() {

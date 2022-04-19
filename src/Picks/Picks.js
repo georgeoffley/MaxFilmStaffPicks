@@ -6,7 +6,7 @@ function Picks() {
 
     return(
         <>
-            <div>Hello from the picks</div>
+            <div className="text-4xl">Hello from the picks</div>
             <Api />
         </>
     );
